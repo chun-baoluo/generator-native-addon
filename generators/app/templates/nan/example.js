@@ -1,3 +1,3 @@
-const yeoman = require('./build/Release/<%= name %>');
+const yeoman = require('./build/Release/<%= name %>.node');
 
 console.log(yeoman.call());

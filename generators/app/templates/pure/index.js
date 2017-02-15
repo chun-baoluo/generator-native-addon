@@ -1,1 +1,1 @@
-module.exports = require('./build/Release/<%= name %>');
+module.exports = require('./build/Release/<%= name %>.node');
