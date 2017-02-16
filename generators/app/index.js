@@ -10,7 +10,7 @@ module.exports = class extends Generator {
     };
 
     initializing() {
-      this.log(yosay('Yo! Welcome to the humble ' + chalk.green('native-addon') + ' generator!'));
+      this.log(yosay('Yo! Welcome to the humble ' + chalk.green.bold('native-addon') + ' generator!'));
 
       this.sourceRoot(path.join(__dirname, 'templates'));
 
@@ -147,7 +147,8 @@ module.exports = class extends Generator {
       });
     };
 
-    end() {   
+    end() {
+      this.log(chalk.green.bold('Done! Have fun!'));
     };
 };
 
