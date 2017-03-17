@@ -1,0 +1,31 @@
+{
+  "name": "generator-native-addon",
+  "version": "1.1.1",
+  "description": "Native addon generator.",
+  "homepage": "",
+  "author": {
+    "name": "Pavel Bakharev"
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "generator-native-addon",
+    "native-addon",
+    "native",
+    "addon",
+    "cpp",
+    "C++"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "yeoman-generator": "^1.1.0",
+    "yosay": "^1.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/star-collector/generator-native-addon.git"
+  },
+  "license": "MIT"
+}
