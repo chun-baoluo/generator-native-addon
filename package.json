@@ -1,11 +1,7 @@
 {
   "name": "generator-native-addon",
-  "version": "1.1.2",
-  "description": "Native addon generator.",
-  "homepage": "",
-  "author": {
-    "name": "Pavel Bakharev"
-  },
+  "version": "2.0.0",
+  "description": "Humble Native addon generator for Yeoman.",
   "files": [
     "generators"
   ],
@@ -14,14 +10,16 @@
     "generator-native-addon",
     "native-addon",
     "native",
+    "napi",
+    "N-API",
     "addon",
     "cpp",
     "C++"
   ],
   "dependencies": {
-    "chalk": "^1.1.3",
-    "yeoman-generator": "^1.1.0",
-    "yosay": "^2.0.0"
+    "chalk": "^2.3.0",
+    "yeoman-generator": "^2.0.1",
+    "yosay": "^2.0.1"
   },
   "repository": {
     "type": "git",

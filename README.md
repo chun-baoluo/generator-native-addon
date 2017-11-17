@@ -2,7 +2,7 @@
 
 ![alt tag](https://raw.githubusercontent.com/bakharevpavel/generator-electron-humble/master/generators/app/templates/dev/app/home/icon.png)
 
-Humble native addon generator for Yeoman. Allows to generate a native addon using Nan or without it.
+Humble native addon generator for Yeoman. Allows to generate a native Node.js addon using N-API, Nan or without them.
 
 ## Installation
 

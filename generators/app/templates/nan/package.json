@@ -9,7 +9,7 @@
   	"gypfile": true,
   	"keywords": [],
   	"dependencies": {
-    	"nan": "^2.0.5"
+    	"nan": "^2.8.0"
   	},
   	"author": "",
   	"license": "MIT"

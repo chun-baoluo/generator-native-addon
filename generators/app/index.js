@@ -28,22 +28,34 @@ module.exports = class extends Generator {
         message: 'What is the name of your addon?',
         default: this.data.appName
       }, {
-        type: 'confirm',
-        name: 'nan',
-        message: 'Do you want to use Nan?',
-        default: true
+        type: 'list',
+        name: 'type',
+        message: 'What type of native addon technology would you like to use?',
+        choices: [{
+          value   : 'napi',
+          name    : 'N-API',
+          checked : true
+        }, {
+          value   : 'nan',
+          name    : 'Nan',
+          checked : false
+        }, {
+          value   : 'node',
+          name    : 'Node',
+          checked : false
+        }]
       }];
 
       this.prompt(prompts).then(function(answers) {
         this.data.name = answers.name;
-        this.data.nan = answers.nan;
+        this.data.type = answers.type;
 
         done();
       }.bind(this));
     };
 
     writing() {
-      if(this.data.nan == true) {
+      if(this.data.type == 'nan') {
         this.fs.copyTpl(
           this.templatePath('./nan/src/template.cpp'),
           this.destinationPath('./src/' + this.data.name + '.cpp'),
@@ -69,75 +81,52 @@ module.exports = class extends Generator {
         );
 
         this.fs.copyTpl(
-          this.templatePath('./nan/index.js'),
-          this.destinationPath('./index.js'),
-          this.data
-        );
-
-        this.fs.copyTpl(
-          this.templatePath('./nan/example.js'),
-          this.destinationPath('./example.js'),
-          this.data
-        );
-
-        this.fs.copyTpl(
           this.templatePath('./nan/binding.gyp'),
           this.destinationPath('./binding.gyp'),
           this.data
         );
 
-        this.fs.copyTpl(
-          this.templatePath('./nan/README.md'),
-          this.destinationPath('./README.md'),
-          this.data
-        );
-
-        this.fs.copy(
-          this.templatePath('./nan/_gitignore'),
-          this.destinationPath('./.gitignore')
-        );
       } else {
         this.fs.copyTpl(
-          this.templatePath('./pure/src/template.cpp'),
+          this.templatePath('./' + this.data.type + '/src/template.cpp'),
           this.destinationPath('./src/' + this.data.name + '.cpp'),
           this.data
         );
 
         this.fs.copyTpl(
-          this.templatePath('./pure/package.json'),
+          this.templatePath('./' + this.data.type + '/package.json'),
           this.destinationPath('./package.json'),
           this.data
         );
 
         this.fs.copyTpl(
-          this.templatePath('./pure/index.js'),
-          this.destinationPath('./index.js'),
-          this.data
-        );
-
-        this.fs.copyTpl(
-          this.templatePath('./pure/example.js'),
-          this.destinationPath('./example.js'),
-          this.data
-        );
-
-        this.fs.copyTpl(
-          this.templatePath('./pure/binding.gyp'),
+          this.templatePath('./' + this.data.type + '/binding.gyp'),
           this.destinationPath('./binding.gyp'),
           this.data
         );
-
-        this.fs.copyTpl(
-          this.templatePath('./pure/README.md'),
-          this.destinationPath('./README.md'),
-          this.data
-        );
-
-        this.fs.copy(
-          this.templatePath('./pure/_gitignore'),
-          this.destinationPath('./.gitignore')
-        );
       };
+      
+      this.fs.copyTpl(
+        this.templatePath('./common/index.js'),
+        this.destinationPath('./index.js'),
+        this.data
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('./common/example.js'),
+        this.destinationPath('./example.js'),
+        this.data
+      );
+      this.fs.copyTpl(
+        this.templatePath('./common/README.md'),
+        this.destinationPath('./README.md'),
+        this.data
+      );
+
+      this.fs.copy(
+        this.templatePath('./common/_gitignore'),
+        this.destinationPath('./.gitignore')
+      );
     };
 
     install() {
